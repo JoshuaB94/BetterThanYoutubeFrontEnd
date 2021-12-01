@@ -1,6 +1,3 @@
 import './RelatedVideosPanel.css';
-import React, {useState, useEffect} from 'react';
+import React, {Component} from 'react';
 
-function RelatedVideos() {
-    
-}
