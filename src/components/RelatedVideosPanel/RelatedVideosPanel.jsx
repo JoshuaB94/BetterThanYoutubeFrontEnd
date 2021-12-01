@@ -21,3 +21,5 @@ const RelatedVideosPanel = (props) => {
     
 
 export default RelatedVideosPanel;
+
+// onClick = {props.theNewVideo(videoObject.id.videoId)}
