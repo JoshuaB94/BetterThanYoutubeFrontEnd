@@ -2,6 +2,7 @@ import './App.css';
 import React, {Component} from 'react';
 import axios from 'axios';
 import BetterThanYTPlayer from './VideoPlayer/VideoPlayer';
+import SearchBar from './SearchBar/SearchBar';
 
 class App extends Component {
   constructor(props){
@@ -17,13 +18,15 @@ class App extends Component {
 
   getVideos = async (searchbarInput) => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=5&type=video&q=Dr disrespect`); //Interpolate a SearchBar Input Function
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=5&type=video&q=${searchbarInput}`);
       console.log(response.data.items[0].id.videoId);
+      
       let fetchedVideo = "https://www.youtube.com/embed/" + response.data.items[0].id.videoId
+      this.state.playerVideo = fetchedVideo
       
       console.log(fetchedVideo)
       this.setState({
-        playerVideo: fetchedVideo
+        playerVideo: this.state.playerVideo
       })
     }
     catch(err){
@@ -37,6 +40,7 @@ class App extends Component {
       <div>
       <h1>Hi BetterThanYoutube!</h1>
       <BetterThanYTPlayer thePlayerVideo = {this.state.playerVideo}/>
+      <SearchBar theGetVideos = {this.getVideos}/>
       </div>
     )
   }
