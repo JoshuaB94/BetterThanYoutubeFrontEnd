@@ -6,7 +6,7 @@ const RelatedVideosPanel = (props) => {
         if(videoObject.snippet != undefined){
             return(
                 <div>
-                    <image src={videoObject.snippet.thumbnails.default.url} alt="video thumbnail"/>
+                    <img src={videoObject.snippet.thumbnails.default.url} alt="video thumbnail"/>
                     <h4>{videoObject.snippet.title}</h4>
                 </div>
             )
