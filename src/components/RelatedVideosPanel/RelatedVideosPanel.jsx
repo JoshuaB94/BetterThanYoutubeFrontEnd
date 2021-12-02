@@ -6,7 +6,7 @@ const RelatedVideosPanel = (props) => {
         if(videoObject.snippet != undefined){
             return(
                 <div>
-                    {videoObject.snippet.thumbnails.default.url}
+                    <image src={videoObject.snippet.thumbnails.default.url} alt="video thumbnail"/>
                     <h4>{videoObject.snippet.title}</h4>
                 </div>
             )
@@ -22,4 +22,5 @@ const RelatedVideosPanel = (props) => {
 
 export default RelatedVideosPanel;
 
-// onClick = {props.theNewVideo(videoObject.id.videoId)}
+// onClick = {props.theGetRelatedVideos(videoObject.id.videoId)}
+// this.state.videoId
