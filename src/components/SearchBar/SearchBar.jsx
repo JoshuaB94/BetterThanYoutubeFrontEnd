@@ -18,8 +18,8 @@ class SearchBar extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.theGetVideos(this.state.search);
-        this.props.theGetRelatedVideos();
+        this.props.theGetVideos(this.state.search); // use .then ??
+        // this.props.theGetRelatedVideos();
     }
 
     render(){

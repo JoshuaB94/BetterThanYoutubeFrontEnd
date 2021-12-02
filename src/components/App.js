@@ -4,6 +4,7 @@ import axios from 'axios';
 import BetterThanYTPlayer from './VideoPlayer/VideoPlayer';
 import SearchBar from './SearchBar/SearchBar';
 import RelatedVideosPanel from './RelatedVideosPanel/RelatedVideosPanel';
+import Comments from './Comments/Comments';
 
 class App extends Component {
   constructor(props){
@@ -14,18 +15,18 @@ class App extends Component {
           videoTitle: "",
           videoDescription: "",
           videoThumbNail: "",
-          relatedVideos: []
+          relatedVideos: [],
       };
   }
 
   componentDidMount(){
     this.getVideos();
-    this.getRelatedVideos();
+    // this.getRelatedVideos();
 }
 
   getVideos = async (searchbarInput) => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyAD-SmL9ovc4zZU41GUgOHhs7GKcYofpX0&maxResults=5&type=video&part=snippet&q=${searchbarInput}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBvzIx2eLNmV9lLIKphlEt4584KMckQn6Y&maxResults=5&type=video&part=snippet&q=${searchbarInput}`);
       console.log(response.data.items[0].id.videoId);
 
       let fetchedVideo = "https://www.youtube.com/embed/" + response.data.items[0].id.videoId
@@ -33,20 +34,16 @@ class App extends Component {
       let fetchedTitle = response.data.items[0].snippet.title
       let fetchedDescription = response.data.items[0].snippet.description
       let fetchedThumbNail = response.data.items[0].snippet.thumbnails.default.url
-      this.state.playerVideo = fetchedVideo
-      this.state.videoId = fetchedVideoId
-      this.state.videoTitle = fetchedTitle
-      this.state.videoDescription = fetchedDescription
-      this.state.videoThumbnail = fetchedThumbNail
-      
+      let fetchedRelatedVideos = response.data.items
       
       console.log(fetchedVideo)
       this.setState({
-        playerVideo: this.state.playerVideo,
-        videoId: this.state.videoId,
-        videoTitle: this.state.videoTitle,
-        videoDescription: this.state.videoDescription,
-        videoThumbNail: this.state.videoThumbNail,
+        playerVideo: fetchedVideo,
+        videoId: fetchedVideoId,
+        videoTitle: fetchedTitle,
+        videoDescription: fetchedDescription,
+        videoThumbNail: fetchedThumbNail,
+        relatedVideos: fetchedRelatedVideos
       })
     }
     catch(err){
@@ -56,7 +53,7 @@ class App extends Component {
 
   getRelatedVideos = async () => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyAD-SmL9ovc4zZU41GUgOHhs7GKcYofpX0&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBvzIx2eLNmV9lLIKphlEt4584KMckQn6Y&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
 
       this.setState({
         relatedVideos: response.data.items
@@ -68,6 +65,20 @@ class App extends Component {
     }
   }
 
+  // getRelatedVideosToVideo = async () => {
+  //   try{
+  //     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
+
+  //     this.setState({
+  //       relatedVideos: response.data.items
+  //     });
+  //     console.log(this.state.relatedVideos)
+  //   }
+  //   catch(err){
+  //     console.log("Error getting related videos", err)
+  //   }
+  // }
+
   // newVideo = (input) => {
   //   let thePlayerVideo = "https://www.youtube.com/embed/" + input
   //   this.state.playerVideo = thePlayerVideo
@@ -78,6 +89,10 @@ class App extends Component {
   //   });
   // }
  
+  // componentDidUpdate(){
+  //   if(this.state.videoId !== prevState.videoId)
+
+  // }
 
    
   render(){
@@ -85,8 +100,9 @@ class App extends Component {
       <div>
       <h1>Hi BetterThanYoutube!</h1>
       <BetterThanYTPlayer thePlayerVideo = {this.state.playerVideo} theVideoTitle = {this.state.videoTitle} theVideoDescription = {this.state.videoDescription}/>
-      <SearchBar theGetVideos = {this.getVideos} theGetRelatedVideos = {this.getRelatedVideos}/>
-      <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} theGetVideos = {this.getVideos}/>
+      <SearchBar theGetVideos = {this.getVideos} theGetRelatedVideos = {this.getRelatedVideos} theVideoComments = {this.videoComments}/>
+      <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} getRelatedVideos = {this.getRelatedVideos} theVideoId = {this.state.videoId}/>
+      <Comments theVideoId = {this.state.videoId}/>
       </div>
     )
   }

@@ -1,8 +1,12 @@
 import './RelatedVideosPanel.css';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-const RelatedVideosPanel = (props) => {
-    let xyz = props.theRelatedVideos.map((videoObject) => {
+
+
+const RelatedVideosPanel = ({theVideoId, theRelatedVideos, getRelatedVideos}) => {
+    const [videoId, setVideoId] = useState(theVideoId)
+    useEffect(()=>{getRelatedVideos()}, [videoId])
+    let xyz = theRelatedVideos.map((videoObject) => {
         if(videoObject.snippet != undefined){
             return(
                 <div>
@@ -18,7 +22,6 @@ const RelatedVideosPanel = (props) => {
             </div>
         );
     };
-    
 
 export default RelatedVideosPanel;
 
