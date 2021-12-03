@@ -9,3 +9,8 @@
     border-radius: 10px;
     border-color: #e2e2e2;
   }
+
+  h2.comments-heading {
+    font-size: 20px;
+    font-weight: 600;
+  }

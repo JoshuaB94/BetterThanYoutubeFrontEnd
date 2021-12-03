@@ -74,7 +74,7 @@ class Comments extends Component {
         const allComments = this.state.allComments //create map function for allComments to render with html tags and style
         return(
             <div className="comments-container">
-                <h2 className="comments-row">Comments</h2>
+                <h2 className="comments-heading">Comments</h2>
                 <AddCommentForm theAddComment = {this.addComment} thatVideoId = {this.props.theVideoId}/>
             </div>
         )
