@@ -49,6 +49,14 @@ class Comments extends Component {
         }
     }
 
+    displayComments = () => {
+        return (
+            <div>
+                {this.props.theVideoId.map}
+            </div>
+        )
+    }
+
     // likeComment  = () => {
     //     return (  );
     // }
@@ -76,6 +84,9 @@ class Comments extends Component {
             <div className="comments-container">
                 <h2 className="comments-heading">Comments</h2>
                 <AddCommentForm theAddComment = {this.addComment} thatVideoId = {this.props.theVideoId}/>
+                <div>
+                    {this.displayComments()}
+                </div>
             </div>
         )
       }
