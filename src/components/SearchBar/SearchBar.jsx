@@ -24,14 +24,19 @@ class SearchBar extends Component{
 
     render(){
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div>
-                    <input name="search" onChange={this.handleChange} value={this.state.search}/>
+            <div className="container--xxl header-area">
+                <div className="row align-items-center">
+                    <div className="col app-branding"><h1 className="app-name">BetterThanYoutube</h1>
+                    </div>
+                    <div className="col searchbar">
+                        <form className="video-searchbar" onSubmit={this.handleSubmit}>
+                             <div>
+                         <input className="searchInput" name="search" onChange={this.handleChange} value={this.state.search}/>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <button type="submit" className="mt-3">Search Videos</button>
-                </div>
-            </form>
+            </div>
         );
     }
 }
