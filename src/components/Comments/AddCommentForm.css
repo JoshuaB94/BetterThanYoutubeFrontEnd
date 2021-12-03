@@ -1,0 +1,39 @@
+.comment-textarea {
+    margin-top: 2.5%;
+    background-color: #303030;
+    padding-left: 20px;
+    padding-top: 15px;
+    border-radius: 5px;
+  }
+  
+  .comment-textarea::placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+  
+  .comment-textarea:focus {
+    background-color: #454545;
+    color: #fff;
+  }
+  
+  .comment-button {
+    margin-top: 1%;
+    background-color: #59BD5E;
+    border-style: none;
+    border-radius: 3px;
+    padding: 12px 30px 12px 30px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    float: right;
+    color: white;
+    
+    /*Hover Off Transition*/
+    -webkit-transition: background-color .5s;
+  }
+  
+  .comment-button:hover {
+    background-color: #D22712;
+    
+    /*Hover On Transition*/
+    -webkit-transition: background-color .5s;
+  }

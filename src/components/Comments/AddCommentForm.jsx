@@ -25,9 +25,8 @@ class AddCommentForm extends Component {
         return(
             <div>
                 <form>
-                    <label>Add Comment</label>
-                    <input type="text" name="text" onChange={this.handleChange} value={this.state.text}/>
-                    <button type="submit">Submit Comment</button>
+                    <textarea className="form-control comment-textarea" rows="5" type="text" name="text" placeholder="Write a Comment..." onChange={this.handleChange} value={this.state.text}/>
+                    <button className="comment-button" type="submit">Comment</button>
                 </form>
             </div>
         )
