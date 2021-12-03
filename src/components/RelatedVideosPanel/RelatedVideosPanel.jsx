@@ -6,19 +6,20 @@ import React, {useState, useEffect} from 'react';
 const RelatedVideosPanel = ({theVideoId, theRelatedVideos, getRelatedVideos}) => {
     const [videoId, setVideoId] = useState(theVideoId)
     useEffect(()=>{getRelatedVideos()}, [videoId])
-    let xyz = theRelatedVideos.map((videoObject) => {
+    let relatedVideosPanel = theRelatedVideos.map((videoObject) => {
         if(videoObject.snippet != undefined){
             return(
                 <div>
-                    <img src={videoObject.snippet.thumbnails.default.url} alt="video thumbnail"/>
-                    <h4>{videoObject.snippet.title}</h4>
+                    <img className="video-thumbnail" src={videoObject.snippet.thumbnails.default.url} alt="video thumbnail"/>
+                    <h4 className="related-video-title">{videoObject.snippet.title}</h4>
                 </div>
             )
         }
     });
         return(
-            <div>
-                {xyz}
+            <div className="related-videos-area">
+                <div><h2 className="related-panel-title">Related Videos</h2></div>
+                <div className="related-tiles">{relatedVideosPanel}</div>
             </div>
         );
     };

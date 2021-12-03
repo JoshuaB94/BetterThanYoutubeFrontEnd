@@ -26,7 +26,7 @@ class App extends Component {
 
   getVideos = async (searchbarInput) => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyA6Utc98GGg3lTTh6KRcLbSAQIng7jm_Y8&maxResults=5&type=video&part=snippet&q=${searchbarInput}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=4&type=video&part=snippet&q=${searchbarInput}`);
       console.log(response.data.items[0].id.videoId);
 
       let fetchedVideo = "https://www.youtube.com/embed/" + response.data.items[0].id.videoId
@@ -53,7 +53,7 @@ class App extends Component {
 
   getRelatedVideos = async () => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyA6Utc98GGg3lTTh6KRcLbSAQIng7jm_Y8&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=4&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
 
       this.setState({
         relatedVideos: response.data.items
@@ -99,10 +99,16 @@ class App extends Component {
     return(
       <div className="container--xxl">
       <SearchBar theGetVideos = {this.getVideos} theGetRelatedVideos = {this.getRelatedVideos} theVideoComments = {this.videoComments}/>
-      <BetterThanYTPlayer thePlayerVideo = {this.state.playerVideo} theVideoTitle = {this.state.videoTitle} theVideoDescription = {this.state.videoDescription}/>
-      <Comments theVideoId = {this.state.videoId}/>
-      <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} getRelatedVideos = {this.getRelatedVideos} theVideoId = {this.state.videoId}/>
-      
+        <div className="main-container">
+          <div className="app-row">
+            <div className="main-video-area">
+              <BetterThanYTPlayer thePlayerVideo = {this.state.playerVideo} theVideoTitle = {this.state.videoTitle} theVideoDescription = {this.state.videoDescription}/>
+              <Comments theVideoId = {this.state.videoId}/>
+              <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} getRelatedVideos = {this.getRelatedVideos} theVideoId = {this.state.videoId}/>
+            </div>
+            <div className="footer-area">© 2021 - BetterThanYoutube</div>
+          </div>
+        </div>
       </div>
     )
   }

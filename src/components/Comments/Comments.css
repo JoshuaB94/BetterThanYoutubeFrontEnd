@@ -1,9 +1,8 @@
 .comments-container {
     background-color: #fafafa;
-    width: 50%;
-    margin-left: 10%;
+    /* width: 50%; */
     margin-top: 1%;
-    padding: 30px 40px 500px 40px;
+    padding: 30px 40px 250px 40px;
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
