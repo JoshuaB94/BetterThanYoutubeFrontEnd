@@ -100,8 +100,9 @@ class App extends Component {
       <div className="container--xxl">
       <SearchBar theGetVideos = {this.getVideos} theGetRelatedVideos = {this.getRelatedVideos} theVideoComments = {this.videoComments}/>
       <BetterThanYTPlayer thePlayerVideo = {this.state.playerVideo} theVideoTitle = {this.state.videoTitle} theVideoDescription = {this.state.videoDescription}/>
-      <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} getRelatedVideos = {this.getRelatedVideos} theVideoId = {this.state.videoId}/>
       <Comments theVideoId = {this.state.videoId}/>
+      <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} getRelatedVideos = {this.getRelatedVideos} theVideoId = {this.state.videoId}/>
+      
       </div>
     )
   }

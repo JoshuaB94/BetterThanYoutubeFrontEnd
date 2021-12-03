@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import AddCommentForm from './AddCommentForm';
+import './Comments.css'
 
 class Comments extends Component {
     constructor(props){
@@ -72,7 +73,8 @@ class Comments extends Component {
         console.log(this.state.allComments)
         const allComments = this.state.allComments //create map function for allComments to render with html tags and style
         return(
-            <div>
+            <div className="comments-container">
+                <h2 className="comments-row">Comments</h2>
                 <AddCommentForm theAddComment = {this.addComment} thatVideoId = {this.props.theVideoId}/>
             </div>
         )

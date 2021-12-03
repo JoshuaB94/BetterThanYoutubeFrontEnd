@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddCommentForm.css';
 
 class AddCommentForm extends Component {
     constructor(props){
