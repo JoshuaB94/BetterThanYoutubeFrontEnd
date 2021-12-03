@@ -24,7 +24,7 @@ class Comments extends Component {
         try{
             let response = await axios.get(`http://localhost:5000/api/comments/${this.props.theVideoId}`)
             console.log(response.data)
-            let theComments = response.data
+            let theComments = response.data // .items ?
             this.setState({
                 allComments: theComments
             })
@@ -38,6 +38,10 @@ class Comments extends Component {
         try{
             let addedComment = await axios.post(`http://localhost:5000/api/comments`, inputComment)
             console.log(addedComment)
+            this.state.allComments.push(addedComment)
+            this.setState({
+                allComments: this.state.allComments
+            })
         }
         catch(err){
             console.log("Error posting new comment", err)
@@ -66,7 +70,7 @@ class Comments extends Component {
 
     render(){
         console.log(this.state.allComments)
-        const allComments = this.state.allComments
+        const allComments = this.state.allComments //create map function for allComments to render with html tags and style
         return(
             <div>
                 <AddCommentForm theAddComment = {this.addComment} thatVideoId = {this.props.theVideoId}/>

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class AddCommentForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            videoId: "",
+            videoId: this.props.thatVideoId,
             text: ""
         };
     }
@@ -18,10 +17,6 @@ class AddCommentForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            videoId: this.props.thatVideoId,
-            text: this.state.text
-        })
         this.props.theAddComment(this.state);
     }
 

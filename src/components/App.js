@@ -26,7 +26,7 @@ class App extends Component {
 
   getVideos = async (searchbarInput) => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBvzIx2eLNmV9lLIKphlEt4584KMckQn6Y&maxResults=5&type=video&part=snippet&q=${searchbarInput}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyA6Utc98GGg3lTTh6KRcLbSAQIng7jm_Y8&maxResults=5&type=video&part=snippet&q=${searchbarInput}`);
       console.log(response.data.items[0].id.videoId);
 
       let fetchedVideo = "https://www.youtube.com/embed/" + response.data.items[0].id.videoId
@@ -53,7 +53,7 @@ class App extends Component {
 
   getRelatedVideos = async () => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBvzIx2eLNmV9lLIKphlEt4584KMckQn6Y&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyA6Utc98GGg3lTTh6KRcLbSAQIng7jm_Y8&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
 
       this.setState({
         relatedVideos: response.data.items
