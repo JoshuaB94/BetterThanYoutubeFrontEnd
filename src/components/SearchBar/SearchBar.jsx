@@ -25,13 +25,13 @@ class SearchBar extends Component{
     render(){
         return (
             <div className="container--xxl header-area">
-                <div className="row align-items-center">
+                <div className="row">
                     <div className="col app-branding"><h1 className="app-name">BetterThanYoutube</h1>
                     </div>
                     <div className="col searchbar">
                         <form className="video-searchbar" onSubmit={this.handleSubmit}>
                              <div>
-                         <input className="searchInput" name="search" onChange={this.handleChange} value={this.state.search}/>
+                         <input className="searchInput" name="search" onChange={this.handleChange} value={this.state.search} placeholder="Search for a Video..."/>
                             </div>
                         </form>
                     </div>
