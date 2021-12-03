@@ -1,43 +1,52 @@
 .header-area {
-    background-color: #D9D9D9;
-    padding-top: 20px;
-    padding-bottom: 25px;
-  }
+  background-color: #dc4532;
+  padding-top: 20px;
+  padding-bottom: 25px;
   
-  h1 {
-    color: black;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  .col.app-branding {
-    padding-left: 50px;
-    padding-right: 30px;
-  }
-  
-  .col.searchbar {
-    padding-right: 30px;
-  }
-  
-  .video-searchbar{
-    position: absolute;
-    right: 50px;
-    top: 28px;
-    width: 30%;
-  }
-  
-  .searchInput {
-    width: 100%;  
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    border-radius: 100px;
-    border: 0;
-    background-color: white;
+box-shadow:
+0px 0.3px 0.9px rgba(0, 0, 0, 0.057),
+0px 1.1px 3.1px rgba(0, 0, 0, 0.083),
+0px 5px 14px rgba(0, 0, 0, 0.14);
 
-    box-shadow:
-    0px 0px 3.1px rgba(0, 0, 0, 0.02),
-    0px 0px 10.5px rgba(0, 0, 0, 0.03),
-    0px 0px 47px rgba(0, 0, 0, 0.05);
-  }
+}
+
+h1 {
+  color: white;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.col.app-branding {
+  padding-left: 50px;
+  padding-right: 30px;
+}
+
+.col.searchbar {
+  padding-right: 30px;
+}
+
+.video-searchbar{
+  position: absolute;
+  right: 50px;
+  top: 28px;
+  width: 30%;
+}
+
+.searchInput {
+  width: 100%;  
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  border-radius: 100px;
+  border: 0;
+  background-color: white;
+
+  box-shadow:
+  0px 0px 3.1px rgba(0, 0, 0, 0.02),
+  0px 0px 10.5px rgba(0, 0, 0, 0.03),
+  0px 0px 47px rgba(0, 0, 0, 0.05);
+}
+
+
+
