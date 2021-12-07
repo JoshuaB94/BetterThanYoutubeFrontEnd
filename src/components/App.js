@@ -5,6 +5,7 @@ import BetterThanYTPlayer from './VideoPlayer/VideoPlayer';
 import SearchBar from './SearchBar/SearchBar';
 import RelatedVideosPanel from './RelatedVideosPanel/RelatedVideosPanel';
 import Comments from './Comments/Comments';
+import apiKey from '../apiKey';
 
 class App extends Component {
   constructor(props){
@@ -26,7 +27,7 @@ class App extends Component {
 
   getVideos = async (searchbarInput) => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=4&type=video&part=snippet&q=${searchbarInput}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=4&type=video&part=snippet&q=${searchbarInput}`);
       console.log(response.data.items[0].id.videoId);
 
       let fetchedVideo = "https://www.youtube.com/embed/" + response.data.items[0].id.videoId
@@ -53,7 +54,7 @@ class App extends Component {
 
   getRelatedVideos = async () => {
     try{
-      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=4&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
+      let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=4&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
 
       this.setState({
         relatedVideos: response.data.items
@@ -67,7 +68,7 @@ class App extends Component {
 
   // getRelatedVideosToVideo = async () => {
   //   try{
-  //     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCFkYBQpklfldTUUxy9csFQfWr4Z2ZQcdU&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
+  //     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&maxResults=5&type=video&part=snippet&relatedToVideoId=${this.state.videoId}`);
 
   //     this.setState({
   //       relatedVideos: response.data.items
