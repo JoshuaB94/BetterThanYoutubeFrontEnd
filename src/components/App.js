@@ -6,6 +6,7 @@ import SearchBar from './SearchBar/SearchBar';
 import RelatedVideosPanel from './RelatedVideosPanel/RelatedVideosPanel';
 import Comments from './Comments/Comments';
 import apiKey from '../apiKey';
+import Footer from './Footer/Footer';
 
 class App extends Component {
   constructor(props){
@@ -107,7 +108,7 @@ class App extends Component {
               <Comments theVideoId = {this.state.videoId}/>
               <RelatedVideosPanel theRelatedVideos = {this.state.relatedVideos} getRelatedVideos = {this.getRelatedVideos} theVideoId = {this.state.videoId}/>
             </div>
-            <div className="footer-area">© 2021 - BetterThanYoutube</div>
+            <Footer />
           </div>
         </div>
       </div>
